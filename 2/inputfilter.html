@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="framework/angular.js"></script>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="filterCtrl">
+    <label>输入姓名:<input type="text" ng-model="input"></label>
+
+    <ul>
+        <!--根据输入框的内容过滤数据,并按照国家排序-->
+        <li ng-repeat="x in name | filter:input | orderBy:'country'">
+            {{x.name + ' ' + x.country}}
+        </li>
+    </ul>
+    <script>
+        var myModule = angular.module('myApp',[]);
+        myModule.controller('filterCtrl', function ($scope) {
+            $scope.name = [
+                {name:'Hege', country:'Sweden'},
+                {name:'Jani', country:'Norway'},
+                {name:'Kai', country:'Denmark'}
+            ]
+        })
+    </script>
+
+</div>
+</body>
+</html>
