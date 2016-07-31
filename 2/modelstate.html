@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="framework/angular.js"></script>
+
+    <!--ng-model 指令基于它们的状态为 HTML 元素提供了 CSS 类-->
+    <style>
+        input.ng-invalid {
+            background-color:red;
+        }
+    </style>
 </head>
 <body>
 <div ng-app="" ng-init="emailAddress='latency@outlook.com'">
 <form name="myDiv">
     <label>电子邮件<input type="email" name="address" ng-model="emailAddress" ></label>
     <span ng-show="myDiv.address.$error.email">邮箱地址不合法</span>
+
+    <!--ng-model 指令可以为应用数据提供状态值-->
     <p>valid:{{myDiv.address.$valid}}(合法为True)</p>
     <p>dirty:{{myDiv.address.$dirty}}(改变为True)</p>
     <p>touched:{{myDiv.address.$touched}}(触摸为True)</p>
